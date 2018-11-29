@@ -1,6 +1,6 @@
 ﻿Imports EkaListados
 
-Public Class ListadoHorasPorCliente : Implements IAyudaSocios, IAyudaOpciones
+Public Class ListadoHorasPorCliente : Implements IAyudaSocios, IAyudaOpciones, IAyudaClientes
 
     Dim WControlSocios As Control = Nothing
 
@@ -24,25 +24,30 @@ Public Class ListadoHorasPorCliente : Implements IAyudaSocios, IAyudaOpciones
     Public Sub _ProcesarAyudaOpciones(indice As Object) Implements IAyudaOpciones._ProcesarAyudaOpciones
 
         Dim frm As Form = Nothing
+        WControlSocios = Nothing
 
         Select Case indice
 
             Case 0 ' Clientes
-
+                frm = New AyudaClientes
             Case 1 ' Responsables
                 frm = New AyudaSocios
                 WControlSocios = txtResponsable
             Case 2 ' Origen
                 frm = New AyudaSocios
                 WControlSocios = txtOrigen
-            Case Else
-                WControlSocios = Nothing
         End Select
 
         If frm Is Nothing Then Exit Sub
 
         frm.Show(Me)
 
+    End Sub
+
+    Public Sub _ProcesarAyudaClientes(Codigo As Object, Descripcion As Object) Implements IAyudaClientes._ProcesarAyudaClientes
+        txtDesdeCliente.Text = Codigo
+        txtHastaCliente.Text = Codigo
+        txtDesdeCliente.Focus()
     End Sub
 
     Private Sub ListadoHorasPorCliente_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
@@ -241,5 +246,10 @@ Public Class ListadoHorasPorCliente : Implements IAyudaSocios, IAyudaOpciones
 
     Private Sub btnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
         Close()
+    End Sub
+
+    Private Sub txtDesdeCliente_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles txtHastaCliente.MouseDoubleClick, txtDesdeCliente.MouseDoubleClick
+        Dim frm As New AyudaClientes
+        frm.Show(Me)
     End Sub
 End Class

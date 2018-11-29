@@ -84,6 +84,12 @@
     <Compile Include="Ayudas\AyudaOpciones.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Ayudas\AyudaClientes.Designer.vb">
+      <DependentUpon>AyudaClientes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ayudas\AyudaClientes.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Ayudas\AyudaSocios.Designer.vb">
       <DependentUpon>AyudaSocios.vb</DependentUpon>
     </Compile>
@@ -93,6 +99,7 @@
     <Compile Include="Clases\Helper.vb" />
     <Compile Include="Clases\Query.vb" />
     <Compile Include="Interfaces\IAyudaOpciones.vb" />
+    <Compile Include="Interfaces\IAyudaClientes.vb" />
     <Compile Include="Interfaces\IAyudaSocios.vb" />
     <Compile Include="Listados\ListadoHorasPorCliente.Designer.vb">
       <DependentUpon>ListadoHorasPorCliente.vb</DependentUpon>
@@ -131,6 +138,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Ayudas\AyudaOpciones.resx">
       <DependentUpon>AyudaOpciones.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ayudas\AyudaClientes.resx">
+      <DependentUpon>AyudaClientes.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ayudas\AyudaSocios.resx">
       <DependentUpon>AyudaSocios.vb</DependentUpon>

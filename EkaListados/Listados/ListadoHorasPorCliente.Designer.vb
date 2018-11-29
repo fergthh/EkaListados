@@ -101,9 +101,10 @@ Partial Class ListadoHorasPorCliente
         Me.Label3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(228, Byte), Integer), CType(CType(236, Byte), Integer), CType(CType(227, Byte), Integer))
         Me.Label3.Location = New System.Drawing.Point(413, 42)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(138, 13)
+        Me.Label3.Size = New System.Drawing.Size(146, 13)
         Me.Label3.TabIndex = 0
         Me.Label3.Text = "Estudio Kreutzer & Asociados"
+        Me.Label3.UseMnemonic = False
         '
         'Label1
         '

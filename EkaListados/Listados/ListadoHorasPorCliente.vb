@@ -1,4 +1,5 @@
-﻿Imports EkaListados
+﻿Imports CrystalDecisions.CrystalReports.Engine
+Imports EkaListados
 
 Public Class ListadoHorasPorCliente : Implements IAyudaSocios, IAyudaOpciones, IAyudaClientes
 
@@ -254,8 +255,14 @@ Public Class ListadoHorasPorCliente : Implements IAyudaSocios, IAyudaOpciones, I
     End Sub
 
     Private Sub btnPantalla_Click(sender As Object, e As EventArgs) Handles btnPantalla.Click
+        With _GenerarReporte()
+            .Mostrar()
+        End With
+    End Sub
+
+    Private Function _GenerarReporte() As VistaPrevia
         Dim WDia, WMes, WAnio, WDesde, WHasta, WImpreDesde, WImpreHasta, WTitulo,
-            WDesdeSocio, WHastaSocio, WDesdeSocioII, WHastaSocioII, WDesdeTipo, WHastaTipo As String
+                    WDesdeSocio, WHastaSocio, WDesdeSocioII, WHastaSocioII, WDesdeTipo, WHastaTipo As String
 
         WDia = txtDesdeFecha.Text.Substring(0, 2)
         WMes = txtDesdeFecha.Text.Substring(3, 2)
@@ -313,8 +320,19 @@ Public Class ListadoHorasPorCliente : Implements IAyudaSocios, IAyudaOpciones, I
                 WHastaTipo = "E"
         End Select
 
-        Dim rpt As New ListaHorasclientetarea
+        Dim rpt As ReportDocument
         Dim frm As New VistaPrevia
+
+        Select Case cmbTipoI.SelectedIndex
+            Case 0
+                rpt = New listahorasclientetarea
+            Case 1
+                rpt = New listahorasclientetareaii
+            Case 2
+                rpt = New listahorasclientetareax
+            Case Else
+                rpt = New listahorasclientetareaiv
+        End Select
 
         With frm
             .Reporte = rpt
@@ -322,8 +340,15 @@ Public Class ListadoHorasPorCliente : Implements IAyudaSocios, IAyudaOpciones, I
                     & " AND {Planilla.Asunto} IN " & txtDesdeAsunto.Text & " To " & txtHastaAsunto.Text & " AND {Planilla.TipoHora} IN '" & WDesdeTipo & "' To '" & WHastaTipo & "'" _
                     & " AND {Cliente.Socio} IN " & WDesdeSocio & " To " & WHastaSocio & "" _
                     & " AND {Cliente.SocioII} IN " & WDesdeSocioII & " To " & WHastaSocioII & ""
-            .Mostrar()
         End With
 
+        Return frm
+
+    End Function
+
+    Private Sub btnImprimir_Click(sender As Object, e As EventArgs) Handles btnImprimir.Click
+        With _GenerarReporte()
+            .Imprimir()
+        End With
     End Sub
 End Class

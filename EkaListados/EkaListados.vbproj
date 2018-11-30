@@ -144,12 +144,6 @@
       <DependentUpon>listahorasclientetareaii.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Reportes\ListadoHorasPorCliente\listahorasclientetareaiii.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>listahorasclientetareaiii.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Reportes\ListadoHorasPorCliente\listahorasclientetareaiv.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -198,10 +192,6 @@
     <EmbeddedResource Include="Reportes\ListadoHorasPorCliente\listahorasclientetareaii.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>listahorasclientetareaii.vb</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Reportes\ListadoHorasPorCliente\listahorasclientetareaiii.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>listahorasclientetareaiii.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\ListadoHorasPorCliente\listahorasclientetareaiv.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

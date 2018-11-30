@@ -9,7 +9,7 @@ Public Class VistaPrevia
     
     Private Sub Reporte_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
-        With Me.CrystalReportViewer3
+        With Me.CrystalReportViewer2
             .ReportSource = Me.Reporte
             .Refresh()
         End With
@@ -68,7 +68,7 @@ Public Class VistaPrevia
 
         _ReconectarBaseDatos()
 
-        With Me.CrystalReportViewer3
+        With Me.CrystalReportViewer2
 
             .ReportSource = Me.Reporte
 
@@ -88,7 +88,7 @@ Public Class VistaPrevia
 
     Public Sub ShowMe()
 
-        With Me.CrystalReportViewer3
+        With Me.CrystalReportViewer2
 
             .ReportSource = Me.Reporte
 

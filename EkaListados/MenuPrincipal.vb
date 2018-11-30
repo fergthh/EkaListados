@@ -8,4 +8,5 @@ Public Class MenuPrincipal
     Private Sub _Abrir(frm As Form)
         frm.Show(Me)
     End Sub
+
 End Class

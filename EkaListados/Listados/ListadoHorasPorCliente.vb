@@ -252,4 +252,78 @@ Public Class ListadoHorasPorCliente : Implements IAyudaSocios, IAyudaOpciones, I
         Dim frm As New AyudaClientes
         frm.Show(Me)
     End Sub
+
+    Private Sub btnPantalla_Click(sender As Object, e As EventArgs) Handles btnPantalla.Click
+        Dim WDia, WMes, WAnio, WDesde, WHasta, WImpreDesde, WImpreHasta, WTitulo,
+            WDesdeSocio, WHastaSocio, WDesdeSocioII, WHastaSocioII, WDesdeTipo, WHastaTipo As String
+
+        WDia = txtDesdeFecha.Text.Substring(0, 2)
+        WMes = txtDesdeFecha.Text.Substring(3, 2)
+        WAnio = txtDesdeFecha.Text.Substring(6, 4)
+        WDesde = ordenaFecha(txtDesdeFecha.Text)
+        WHasta = ordenaFecha(txtHastaFecha.Text)
+
+        WImpreDesde = String.Format("{0}/{1}/{2}", WDia, WMes, WAnio)
+        WImpreHasta = String.Format("{0}/{1}/{2}", WDia, WMes, WAnio)
+
+        WTitulo = String.Format("Desde el {0} al {1}", WImpreDesde, WImpreHasta)
+
+        Dim WCliente As DataRow = GetSingle("SELECT Provincia FROM Cliente WHERE Cliente = '" & txtDesdeCliente.Text & "'")
+
+        If WCliente IsNot Nothing Then
+            If OrDefault(WCliente.Item("Provincia"), 0) = 24 Then
+                WImpreDesde = String.Format("{0}/{1}/{2}", WMes, WDia, WAnio)
+                WImpreHasta = String.Format("{0}/{1}/{2}", WDia, WMes, WAnio)
+                WTitulo = String.Format("Period from {0} to {1}", WImpreDesde, WImpreHasta)
+            End If
+        End If
+
+        ExecuteNonQueries("UPDATE Empresa SET Impre1 = '" & WTitulo & "' WHERE Codigo = '1'")
+
+        If Val(txtDesdeCliente.Text) = 0 Then txtDesdeCliente.Text = "0"
+        If Val(txtHastaCliente.Text) = 0 Then txtHastaCliente.Text = "0"
+        If Val(txtDesdeAsunto.Text) = 0 Then txtDesdeAsunto.Text = "0"
+        If Val(txtHastaAsunto.Text) = 0 Then txtHastaAsunto.Text = "0"
+
+        WDesdeSocio = txtResponsable.Text
+        WHastaSocio = WDesdeSocio
+        WDesdeSocioII = txtOrigen.Text
+        WHastaSocioII = WDesdeSocioII
+
+        If Val(txtResponsable.Text) = 0 Then
+            WDesdeSocio = "0"
+            WHastaSocio = "9999"
+        End If
+
+        If Val(txtOrigen.Text) = 0 Then
+            WDesdeSocioII = "0"
+            WHastaSocioII = "9999"
+        End If
+
+        WDesdeTipo = ""
+        WHastaTipo = ""
+        Select Case cmbTipoII.SelectedIndex
+            Case 0
+                WHastaTipo = "Z"
+            Case 1
+                WDesdeTipo = ""
+                WHastaTipo = ""
+            Case Else
+                WDesdeTipo = "E"
+                WHastaTipo = "E"
+        End Select
+
+        Dim rpt As New ListaHorasclientetarea
+        Dim frm As New VistaPrevia
+
+        With frm
+            .Reporte = rpt
+            .Formula = "{Planilla.OrdFecha} IN '" & WDesde & "' To '" & WHasta & "' AND {Planilla.Cliente} IN " & txtDesdeCliente.Text & " To " & txtHastaCliente.Text & "" _
+                    & " AND {Planilla.Asunto} IN " & txtDesdeAsunto.Text & " To " & txtHastaAsunto.Text & " AND {Planilla.TipoHora} IN '" & WDesdeTipo & "' To '" & WHastaTipo & "'" _
+                    & " AND {Cliente.Socio} IN " & WDesdeSocio & " To " & WHastaSocio & "" _
+                    & " AND {Cliente.SocioII} IN " & WDesdeSocioII & " To " & WHastaSocioII & ""
+            .Mostrar()
+        End With
+
+    End Sub
 End Class

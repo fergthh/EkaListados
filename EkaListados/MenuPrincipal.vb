@@ -9,4 +9,7 @@ Public Class MenuPrincipal
         frm.Show(Me)
     End Sub
 
+    Private Sub ListadoDeHorasPorEmpleadoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ListadoDeHorasPorEmpleadoToolStripMenuItem.Click
+        _Abrir(New ListadoHorasPorEmpleado)
+    End Sub
 End Class

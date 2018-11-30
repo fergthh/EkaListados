@@ -1,0 +1,65 @@
+USE eka
+GO
+
+/****** Object:  Table [dbo].[ControlHoras]    Script Date: 30/11/2018 09:17:02 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[ControlHoras](
+	[Clave] [nvarchar](8) NOT NULL,
+	[Abogado] [int] NULL,
+	[Renglon] [int] NULL,
+	[Impre1] [nvarchar](20) NULL,
+	[Horas1] [float] NULL,
+	[Impre2] [nvarchar](20) NULL,
+	[Horas2] [float] NULL,
+	[Impre3] [nvarchar](20) NULL,
+	[Horas3] [float] NULL,
+	[Impre4] [nvarchar](20) NULL,
+	[Horas4] [float] NULL,
+	[Impre5] [nvarchar](20) NULL,
+	[Horas5] [float] NULL,
+	[Impre6] [nvarchar](20) NULL,
+	[Horas6] [float] NULL,
+	[Impre7] [nvarchar](20) NULL,
+	[Horas7] [float] NULL,
+	[Nombre] [nvarchar](50) NULL,
+	[Titulo1] [nvarchar](50) NULL,
+	[Titulo2] [nvarchar](50) NULL,
+ CONSTRAINT [aaaaaControlHoras_PK] PRIMARY KEY NONCLUSTERED 
+(
+	[Clave] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[ControlHoras] ADD  DEFAULT ((0)) FOR [Abogado]
+GO
+
+ALTER TABLE [dbo].[ControlHoras] ADD  DEFAULT ((0)) FOR [Renglon]
+GO
+
+ALTER TABLE [dbo].[ControlHoras] ADD  DEFAULT ((0)) FOR [Horas1]
+GO
+
+ALTER TABLE [dbo].[ControlHoras] ADD  DEFAULT ((0)) FOR [Horas2]
+GO
+
+ALTER TABLE [dbo].[ControlHoras] ADD  DEFAULT ((0)) FOR [Horas3]
+GO
+
+ALTER TABLE [dbo].[ControlHoras] ADD  DEFAULT ((0)) FOR [Horas4]
+GO
+
+ALTER TABLE [dbo].[ControlHoras] ADD  DEFAULT ((0)) FOR [Horas5]
+GO
+
+ALTER TABLE [dbo].[ControlHoras] ADD  DEFAULT ((0)) FOR [Horas6]
+GO
+
+ALTER TABLE [dbo].[ControlHoras] ADD  DEFAULT ((0)) FOR [Horas7]
+GO
+

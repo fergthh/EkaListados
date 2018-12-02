@@ -140,16 +140,20 @@ Partial Class ListadoHorasPorEmpleado
         'txtHastaEmpleado
         '
         Me.txtHastaEmpleado.Location = New System.Drawing.Point(206, 21)
+        Me.txtHastaEmpleado.MaxLength = 4
         Me.txtHastaEmpleado.Name = "txtHastaEmpleado"
         Me.txtHastaEmpleado.Size = New System.Drawing.Size(63, 20)
         Me.txtHastaEmpleado.TabIndex = 1
+        Me.txtHastaEmpleado.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'txtDesdeEmpleado
         '
         Me.txtDesdeEmpleado.Location = New System.Drawing.Point(90, 21)
+        Me.txtDesdeEmpleado.MaxLength = 4
         Me.txtDesdeEmpleado.Name = "txtDesdeEmpleado"
         Me.txtDesdeEmpleado.Size = New System.Drawing.Size(63, 20)
         Me.txtDesdeEmpleado.TabIndex = 0
+        Me.txtDesdeEmpleado.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'GroupBox2
         '
@@ -235,9 +239,11 @@ Partial Class ListadoHorasPorEmpleado
         'txtCliente
         '
         Me.txtCliente.Location = New System.Drawing.Point(85, 20)
+        Me.txtCliente.MaxLength = 4
         Me.txtCliente.Name = "txtCliente"
         Me.txtCliente.Size = New System.Drawing.Size(39, 20)
         Me.txtCliente.TabIndex = 6
+        Me.txtCliente.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'GroupBox6
         '

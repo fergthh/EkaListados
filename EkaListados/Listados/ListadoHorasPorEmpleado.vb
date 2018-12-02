@@ -27,10 +27,15 @@ Public Class ListadoHorasPorEmpleado : Implements IAyudaOpciones, IAyudaClientes
     Public Sub _ProcesarAyudaClientes(Codigo As Object, Descripcion As Object) Implements IAyudaClientes._ProcesarAyudaClientes
         txtCliente.Text = Codigo
         lblDescCliente.Text = Trim(Descripcion)
+        cmbTipoI.Focus()
     End Sub
 
     Private Sub ListadoHorasPorCliente_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
-        txtDesdeEmpleado.Focus()
+        If Val(AccesoAbogado.TipoAcceso) = 1 Then
+            txtDesdeEmpleado.Focus()
+        Else
+            txtDesdeFecha.Focus()
+        End If
     End Sub
 
     Private Sub ListadoHorasPorCliente_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -38,6 +43,9 @@ Public Class ListadoHorasPorEmpleado : Implements IAyudaOpciones, IAyudaClientes
     End Sub
 
     Private Sub _Limpiar()
+
+        txtDesdeEmpleado.Enabled = True
+        txtHastaEmpleado.Enabled = True
 
         For Each c As Control In {txtDesdeEmpleado, txtDesdeFecha, txtHastaEmpleado, txtHastaFecha, txtCliente, lblDescCliente}
             c.Text = ""
@@ -55,6 +63,16 @@ Public Class ListadoHorasPorEmpleado : Implements IAyudaOpciones, IAyudaClientes
         Next
 
         WControlSocios = txtCliente
+
+        If Val(AccesoAbogado.TipoAcceso) <> 1 Then
+
+            txtDesdeEmpleado.Text = AccesoAbogado.Id
+            txtHastaEmpleado.Text = AccesoAbogado.Id
+
+            txtDesdeEmpleado.Enabled = False
+            txtHastaEmpleado.Enabled = False
+
+        End If
 
     End Sub
 
@@ -152,7 +170,9 @@ Public Class ListadoHorasPorEmpleado : Implements IAyudaOpciones, IAyudaClientes
 
     Private Sub btnConsultas_Click(sender As Object, e As EventArgs) Handles btnConsultas.Click
 
-        With New AyudaOpciones({"Clientes", "Empleados"})
+        Dim opciones() As String = IIf(Val(AccesoAbogado.TipoAcceso) = 1, {"Clientes", "Empleados"}, {"Clientes"})
+
+        With New AyudaOpciones(opciones)
             .Show(Me)
         End With
 

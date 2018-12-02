@@ -1,6 +1,4 @@
-﻿Imports EkaListados
-
-Public Class MenuPrincipal
+﻿Public Class MenuPrincipal
     Private Sub LsiatdoDeHorasPorClienteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LsiatdoDeHorasPorClienteToolStripMenuItem.Click
         _Abrir(New ListadoHorasPorCliente)
     End Sub
@@ -19,5 +17,17 @@ Public Class MenuPrincipal
 
     Private Sub CerrarSistemaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CerrarSistemaToolStripMenuItem.Click
         Close()
+    End Sub
+
+    Private Sub MenuPrincipal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        Me.LsiatdoDeHorasPorClienteToolStripMenuItem.Enabled = True
+        Me.ListadoDeControlPorToolStripMenuItem.Enabled = True
+
+        If AccesoAbogado.TipoAcceso = "0" Then
+            Me.LsiatdoDeHorasPorClienteToolStripMenuItem.Enabled = False
+            Me.ListadoDeControlPorToolStripMenuItem.Enabled = False
+        End If
+
     End Sub
 End Class

@@ -1,7 +1,4 @@
-USE eka
-GO
-
-/****** Object:  Table [dbo].[ControlHoras]    Script Date: 30/11/2018 09:17:02 ******/
+/****** Object:  Table [dbo].[ControlHoras]    Script Date: 1/12/2018 21:03:24 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -35,31 +32,3 @@ CREATE TABLE [dbo].[ControlHoras](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-
-ALTER TABLE [dbo].[ControlHoras] ADD  DEFAULT ((0)) FOR [Abogado]
-GO
-
-ALTER TABLE [dbo].[ControlHoras] ADD  DEFAULT ((0)) FOR [Renglon]
-GO
-
-ALTER TABLE [dbo].[ControlHoras] ADD  DEFAULT ((0)) FOR [Horas1]
-GO
-
-ALTER TABLE [dbo].[ControlHoras] ADD  DEFAULT ((0)) FOR [Horas2]
-GO
-
-ALTER TABLE [dbo].[ControlHoras] ADD  DEFAULT ((0)) FOR [Horas3]
-GO
-
-ALTER TABLE [dbo].[ControlHoras] ADD  DEFAULT ((0)) FOR [Horas4]
-GO
-
-ALTER TABLE [dbo].[ControlHoras] ADD  DEFAULT ((0)) FOR [Horas5]
-GO
-
-ALTER TABLE [dbo].[ControlHoras] ADD  DEFAULT ((0)) FOR [Horas6]
-GO
-
-ALTER TABLE [dbo].[ControlHoras] ADD  DEFAULT ((0)) FOR [Horas7]
-GO
-

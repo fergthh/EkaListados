@@ -12,4 +12,12 @@ Public Class MenuPrincipal
     Private Sub ListadoDeHorasPorEmpleadoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ListadoDeHorasPorEmpleadoToolStripMenuItem.Click
         _Abrir(New ListadoHorasPorEmpleado)
     End Sub
+
+    Private Sub ListadoDeControlPorToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ListadoDeControlPorToolStripMenuItem.Click
+        _Abrir(New ListadoControlHoras)
+    End Sub
+
+    Private Sub CerrarSistemaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CerrarSistemaToolStripMenuItem.Click
+        Close()
+    End Sub
 End Class

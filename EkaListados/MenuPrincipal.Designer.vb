@@ -76,7 +76,7 @@ Partial Class MenuPrincipal
         'CerrarSistemaToolStripMenuItem
         '
         Me.CerrarSistemaToolStripMenuItem.Name = "CerrarSistemaToolStripMenuItem"
-        Me.CerrarSistemaToolStripMenuItem.Size = New System.Drawing.Size(150, 22)
+        Me.CerrarSistemaToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.CerrarSistemaToolStripMenuItem.Text = "Cerrar Sistema"
         '
         'MenuPrincipal

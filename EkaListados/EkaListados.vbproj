@@ -108,10 +108,17 @@
     </Compile>
     <Compile Include="Clases\Helper.vb" />
     <Compile Include="Clases\Query.vb" />
+    <Compile Include="Excepciones\SinDatosControlHorasExcepcion.vb" />
     <Compile Include="Interfaces\IAyudaEmpleados.vb" />
     <Compile Include="Interfaces\IAyudaOpciones.vb" />
     <Compile Include="Interfaces\IAyudaClientes.vb" />
     <Compile Include="Interfaces\IAyudaSocios.vb" />
+    <Compile Include="Listados\ListadoControlHoras.Designer.vb">
+      <DependentUpon>ListadoControlHoras.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Listados\ListadoControlHoras.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Listados\ListadoHorasPorEmpleado.Designer.vb">
       <DependentUpon>ListadoHorasPorEmpleado.vb</DependentUpon>
     </Compile>
@@ -144,6 +151,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Reportes\ListadoControlHoras\controlhoras.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>controlhoras.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reportes\ListadoHorasPorCliente\listahorasclientetarea.vb">
       <AutoGen>True</AutoGen>
@@ -225,6 +238,9 @@
     <EmbeddedResource Include="Ayudas\AyudaSocios.resx">
       <DependentUpon>AyudaSocios.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Listados\ListadoControlHoras.resx">
+      <DependentUpon>ListadoControlHoras.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Listados\ListadoHorasPorEmpleado.resx">
       <DependentUpon>ListadoHorasPorEmpleado.vb</DependentUpon>
     </EmbeddedResource>
@@ -239,6 +255,10 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\ListadoControlHoras\controlhoras.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>controlhoras.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\ListadoHorasPorCliente\listahorasclientetarea.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -300,5 +320,6 @@
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

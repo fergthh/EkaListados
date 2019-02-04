@@ -151,7 +151,7 @@ Partial Class ListadoHorasPorCliente
         'txtHastaCliente
         '
         Me.txtHastaCliente.Location = New System.Drawing.Point(206, 21)
-        Me.txtHastaCliente.MaxLength = 4
+        Me.txtHastaCliente.MaxLength = 8
         Me.txtHastaCliente.Name = "txtHastaCliente"
         Me.txtHastaCliente.Size = New System.Drawing.Size(63, 20)
         Me.txtHastaCliente.TabIndex = 1
@@ -160,7 +160,7 @@ Partial Class ListadoHorasPorCliente
         'txtDesdeCliente
         '
         Me.txtDesdeCliente.Location = New System.Drawing.Point(90, 21)
-        Me.txtDesdeCliente.MaxLength = 4
+        Me.txtDesdeCliente.MaxLength = 8
         Me.txtDesdeCliente.Name = "txtDesdeCliente"
         Me.txtDesdeCliente.Size = New System.Drawing.Size(63, 20)
         Me.txtDesdeCliente.TabIndex = 0
@@ -251,7 +251,7 @@ Partial Class ListadoHorasPorCliente
         'txtHastaAsunto
         '
         Me.txtHastaAsunto.Location = New System.Drawing.Point(206, 21)
-        Me.txtHastaAsunto.MaxLength = 4
+        Me.txtHastaAsunto.MaxLength = 8
         Me.txtHastaAsunto.Name = "txtHastaAsunto"
         Me.txtHastaAsunto.Size = New System.Drawing.Size(63, 20)
         Me.txtHastaAsunto.TabIndex = 5
@@ -260,7 +260,7 @@ Partial Class ListadoHorasPorCliente
         'txtDesdeAsunto
         '
         Me.txtDesdeAsunto.Location = New System.Drawing.Point(90, 21)
-        Me.txtDesdeAsunto.MaxLength = 4
+        Me.txtDesdeAsunto.MaxLength = 8
         Me.txtDesdeAsunto.Name = "txtDesdeAsunto"
         Me.txtDesdeAsunto.Size = New System.Drawing.Size(63, 20)
         Me.txtDesdeAsunto.TabIndex = 4
@@ -299,7 +299,7 @@ Partial Class ListadoHorasPorCliente
         'txtResponsable
         '
         Me.txtResponsable.Location = New System.Drawing.Point(85, 20)
-        Me.txtResponsable.MaxLength = 4
+        Me.txtResponsable.MaxLength = 8
         Me.txtResponsable.Name = "txtResponsable"
         Me.txtResponsable.Size = New System.Drawing.Size(39, 20)
         Me.txtResponsable.TabIndex = 6
@@ -338,7 +338,7 @@ Partial Class ListadoHorasPorCliente
         'txtOrigen
         '
         Me.txtOrigen.Location = New System.Drawing.Point(85, 20)
-        Me.txtOrigen.MaxLength = 4
+        Me.txtOrigen.MaxLength = 8
         Me.txtOrigen.Name = "txtOrigen"
         Me.txtOrigen.Size = New System.Drawing.Size(39, 20)
         Me.txtOrigen.TabIndex = 7

@@ -52,8 +52,8 @@ Public Class ListadoHorasPorEmpleado : Implements IAyudaOpciones, IAyudaClientes
         Next
 
         Dim _date As Date = Date.Now
-        Dim primerdia = New Date(_date.Year, _date.Month, 1)
-        Dim ultimodia = primerdia.AddMonths(1).AddDays(-1)
+        Dim primerdia As Date = New Date(_date.Year, _date.Month, 1)
+        Dim ultimodia As Date = primerdia.AddMonths(1).AddDays(-1)
 
         txtDesdeFecha.Text = primerdia.ToString("dd/MM/yyyy")
         txtHastaFecha.Text = ultimodia.ToString("dd/MM/yyyy")
@@ -227,6 +227,9 @@ Public Class ListadoHorasPorEmpleado : Implements IAyudaOpciones, IAyudaClientes
         If Val(txtCliente.Text) = 0 Then
             WDesdeSocio = "0"
             WHastaSocio = "9999"
+        Else
+            WDesdeSocio = txtCliente.Text
+            WHastaSocio = WDesdeSocio
         End If
 
         WDesdeTipo = ""
@@ -262,7 +265,7 @@ Public Class ListadoHorasPorEmpleado : Implements IAyudaOpciones, IAyudaClientes
 
         With frm
             .Reporte = rpt
-            .Formula = "{Planilla.OrdFecha} IN '" & WDesdeFecha & "' To '" & WHastaFecha & "' AND {Planilla.Cliente} IN " & txtCliente.Text & " To " & txtCliente.Text & "" _
+            .Formula = "{Planilla.OrdFecha} IN '" & WDesdeFecha & "' To '" & WHastaFecha & "' AND {Planilla.Cliente} IN " & WDesdeSocio & " To " & WHastaSocio & "" _
                         & " AND {Planilla.Abogado} IN " & txtDesdeEmpleado.Text & " To " & txtHastaEmpleado.Text & " AND {Planilla.TipoHora} IN '" & WDesdeTipo & "' To '" & WHastaTipo & "'"
         End With
 

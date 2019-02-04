@@ -66,8 +66,8 @@ Public Class ListadoHorasPorCliente : Implements IAyudaSocios, IAyudaOpciones, I
         Next
 
         Dim _date As Date = Date.Now
-        Dim primerdia = New Date(_date.Year, _date.Month, 1)
-        Dim ultimodia = primerdia.AddMonths(1).AddDays(-1)
+        Dim primerdia As Date = New Date(_date.Year, _date.Month, 1)
+        Dim ultimodia As Date = primerdia.AddMonths(1).AddDays(-1)
 
         txtDesdeFecha.Text = primerdia.ToString("dd/MM/yyyy")
         txtHastaFecha.Text = ultimodia.ToString("dd/MM/yyyy")

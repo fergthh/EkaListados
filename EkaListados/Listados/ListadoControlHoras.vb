@@ -90,7 +90,7 @@ Public Class ListadoControlHoras : Implements IAyudaOpciones, IAyudaClientes, IA
 
     End Sub
 
-    Private Sub txtCliente_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles txtCliente.MouseDoubleClick, txtAño.MouseDoubleClick, txtMes.MouseDoubleClick
+    Private Sub txtCliente_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles txtCliente.MouseDoubleClick
         Dim frm As New AyudaClientes
         frm.Show(Me)
     End Sub
@@ -101,26 +101,26 @@ Public Class ListadoControlHoras : Implements IAyudaOpciones, IAyudaClientes, IA
 
     Private Sub btnPantalla_Click(sender As Object, e As EventArgs) Handles btnPantalla.Click
 
-        Try
+        'Try
 
-            Me.Cursor = Cursors.WaitCursor
+        Me.Cursor = Cursors.WaitCursor
 
             With _GenerarReporte()
                 .Mostrar()
             End With
 
 
-        Catch ex As SinDatosControlHorasExcepcion
+            'Catch ex As SinDatosControlHorasExcepcion
 
-            MsgBox(ex.Message, MsgBoxStyle.Exclamation)
+            '    MsgBox(ex.Message, MsgBoxStyle.Exclamation)
 
-        Catch ex As Exception
+            'Catch ex As Exception
 
-            MsgBox(ex.Message, MsgBoxStyle.Critical)
+            '    MsgBox(ex.Message, MsgBoxStyle.Critical)
 
-        End Try
+            'End Try
 
-        Me.Cursor = Cursors.Default
+            Me.Cursor = Cursors.Default
 
     End Sub
 
@@ -128,8 +128,8 @@ Public Class ListadoControlHoras : Implements IAyudaOpciones, IAyudaClientes, IA
         Dim WDia, WMes, WAnio, WDesdeFecha, WHastaFecha, WImpreDesde, WImpreHasta, WTitulo, WTituloII,
                     WDesdeSocio, WHastaSocio, WDesdeTipo, WHastaTipo As String
 
-        WMes = txtMes.Text
-        WAnio = txtAño.Text
+        WMes = txtMes.Text.PadLeft(2, "0")
+        WAnio = txtAño.Text.PadLeft(4, "0")
 
         Dim _fecha As String = String.Format("{0}/{1}/{2}", "01", WMes, WAnio)
 
@@ -145,7 +145,7 @@ Public Class ListadoControlHoras : Implements IAyudaOpciones, IAyudaClientes, IA
         WTitulo = String.Format("Desde el {0} al {1}", WImpreDesde, WImpreHasta)
         WTituloII = ""
 
-        Dim WCliente As DataRow = GetSingle("SELECT Razon FROM Cliente WHERE Cliente = '" & txtDesdeEmpleado.Text & "'")
+        Dim WCliente As DataRow = GetSingle("SELECT Razon FROM Cliente WHERE Cliente = '" & txtCliente.Text & "'")
 
         If WCliente IsNot Nothing Then
             WTituloII = OrDefault(WCliente.Item("Razon"), "").ToString.Trim
@@ -199,18 +199,22 @@ Public Class ListadoControlHoras : Implements IAyudaOpciones, IAyudaClientes, IA
 
             Dim WNombre = ""
 
-            Dim WPlanillas As DataTable = GetAll("SELECT p.Cliente, p.Fecha, p.Minutos, p.MinutosII, a.Nombre FROM Planilla p LEFT OUTER JOIN Abogado a ON a.Codigo = p.Abogado WHERE p.Abogado = '" & i & "' AND (p.Cliente = 0 Or p.Cliente = '" & txtCliente.Text & "') AND p.OrdFecha BETWEEN '" & WDesdeFecha & "' AND '" & WHastaFecha & "'")
+            Dim WPlanillas As DataTable = Nothing
+
+            WPlanillas = GetAll("SELECT p.Cliente, p.Fecha, p.Minutos, p.MinutosII, a.Nombre FROM Planilla p LEFT OUTER JOIN Abogado a ON a.Codigo = p.Abogado WHERE p.Abogado = '" & i & "' AND p.OrdFecha BETWEEN '" & WDesdeFecha & "' AND '" & WHastaFecha & "'")
 
             If WPlanillas.Rows.Count = 0 Then Continue For
 
             For Each WPlanilla As DataRow In WPlanillas.Rows
                 With WPlanilla
 
-                    Dim ZDiaCarga As Integer = Val(OrDefault(.Item("Fecha"), "00/00/0000").ToString.Substring(0, 2))
+                    If Val(txtCliente.Text) = 0 Or OrDefault(.Item("Cliente"), 0) = Val(txtCliente.Text) Then
+                        Dim ZDiaCarga As Integer = Val(OrDefault(.Item("Fecha"), "00/00/0000").ToString.Substring(0, 2))
 
-                    ZHoras(ZDiaII(ZDiaCarga)) += OrDefault(.Item("Minutos"), 0) + OrDefault(.Item("MinutosII"), 0)
+                        ZHoras(ZDiaII(ZDiaCarga)) += OrDefault(.Item("Minutos"), 0) + OrDefault(.Item("MinutosII"), 0)
 
-                    WNombre = OrDefault(.Item("Nombre"), "")
+                        WNombre = OrDefault(.Item("Nombre"), "")
+                    End If
 
                 End With
             Next
@@ -264,9 +268,9 @@ Public Class ListadoControlHoras : Implements IAyudaOpciones, IAyudaClientes, IA
 
         ExecuteNonQueries(WSqls.ToArray)
 
-        Dim WControlHorasCheck As DataRow = GetSingle("SELECT TOP 1 Clave FROM ControlHoras")
+        'Dim WControlHorasCheck As DataRow = GetSingle("SELECT TOP 1 Clave FROM ControlHoras")
 
-        If WControlHorasCheck Is Nothing Then Throw New SinDatosControlHorasExcepcion("No se encontraron datos para mostrar/imprimir")
+        'If WControlHorasCheck Is Nothing Then Throw New SinDatosControlHorasExcepcion("No se encontraron datos para mostrar/imprimir")
 
         Dim rpt As New controlhoras
         Dim frm As New VistaPrevia
